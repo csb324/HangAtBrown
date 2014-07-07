@@ -9,6 +9,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @events = @location.events.select{ |e| e.end_time > Time.now }
   end
 
 end

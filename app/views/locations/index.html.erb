@@ -1,4 +1,4 @@
 <% @locations.each do |location| %>
-  <h2><%= location.name %></h2>
+  <h2><%= link_to location.name, location %></h2>
   <p><%= location.description %> </p>
 <% end %>
