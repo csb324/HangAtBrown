@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HangAtBrown</title>
+  <title>hang@brown</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <% if user_signed_in? %>
+    <%= link_to "hang@brown", root_path %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path %><br>
+    <%= link_to "sign up", new_user_registration_path %>
+  <% end %>
+</nav>
 
 <%= yield %>
 
