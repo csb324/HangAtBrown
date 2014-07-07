@@ -4,6 +4,9 @@ class LocationsController < ApplicationController
     @locations = Location.all
   end
 
+  def welcome
+  end
+
   def show
     @location = Location.find(params[:id])
   end

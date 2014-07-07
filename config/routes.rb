@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:index, :show]
 
-  root 'locations#index'
+  authenticated :user do
+    root to: 'locations#index', as: "signed_in"
+  end
+
+  root 'locations#welcome'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
