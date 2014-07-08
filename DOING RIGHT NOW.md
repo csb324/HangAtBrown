@@ -1,1 +1,1 @@
-DOING RIGHT NOW: user has three interests
+DOING RIGHT NOW: user has attribute @interests!! an array!

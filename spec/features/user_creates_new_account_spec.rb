@@ -15,10 +15,16 @@ feature 'User creates new account' do
     fill_in 'Concentration', with: 'Math and shit'
     fill_in 'Password', with: 'ruthrocks'
     fill_in 'Password confirmation', with: 'ruthrocks'
+    fill_in 'user_interest_one', with: 'Poodles'
+    fill_in 'user_interest_two', with: 'Coal'
+    fill_in 'user_interest_three', with: 'Sunshine'
 
     click_button 'Sign up'
 
     expect(page).to have_content "Christina Paxson"
+    expect(page).to have_content "coal"
+    expect(page).to have_content "sunshine"
+
   end
 
   scenario 'unsuccessfully' do

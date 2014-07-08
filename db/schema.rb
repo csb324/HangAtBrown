@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708013546) do
+ActiveRecord::Schema.define(version: 20140708231031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,6 @@ ActiveRecord::Schema.define(version: 20140708013546) do
   end
 
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
-
-  create_table "interests", force: true do |t|
-    t.integer "user_id"
-    t.text    "name"
-  end
-
-  add_index "interests", ["user_id"], name: "index_interests_on_user_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.text "name",        null: false
@@ -68,6 +61,9 @@ ActiveRecord::Schema.define(version: 20140708013546) do
     t.string   "phone_number",                                 null: false
     t.text     "class_year",                                   null: false
     t.text     "concentration",          default: "Undecided", null: false
+    t.text     "interest_one"
+    t.text     "interest_two"
+    t.text     "interest_three"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
