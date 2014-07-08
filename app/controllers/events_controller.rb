@@ -48,7 +48,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:start_time, :end_time, :location_id, :topic, rsvps_attributes: [:outfit])
+    params.require(:event).permit(:start_time, :end_time, :location_id, :topic, :event_type, rsvps_attributes: [:outfit])
   end
 
 end
