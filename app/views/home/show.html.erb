@@ -1,5 +1,13 @@
+<p>Your profile | <%= link_to "edit", edit_user_registration_path %></p>
+<br>
 <h2>Name: <%= @user.first_name %> <%= @user.last_name %> </h2>
 <p>Concentration: <%= @user.concentration %> </p>
-<% @user.all_interests.each do |interest| %>
-<p><%= interest %></p>
+
+<% if @user.all_interests.present? %>
+  <% @user.all_interests.each do |interest| %>
+    <p><%= interest %></p>
+  <% end %>
+<% else %>
+  <div>You haven't added any interests! <%= link_to "Edit your profile!", edit_user_registration_path %></div>
 <% end %>
+

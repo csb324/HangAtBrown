@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :events, through: :rsvps
   has_many :rsvps, dependent: :destroy
 
-  validates :first_name, :last_name, :email, :class_year, :concentration, :password, presence: true
+  validates :first_name, :last_name, :email, :class_year, :concentration, presence: true
 
   def all_interests
     [interest_one.downcase, interest_two.downcase, interest_three.downcase]

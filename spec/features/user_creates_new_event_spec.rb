@@ -12,8 +12,8 @@ feature 'User can create an event' do
 
     select 'eat', from: 'What'
     select 'The Ratty', from: 'event_location_id'
-    fill_in 'event_start_time', with: "8:00 pm"
-    fill_in 'event_end_time', with: "9:00 pm"
+    fill_in 'event_start_time', with: "10:00 pm"
+    fill_in 'event_end_time', with: "11:59 pm"
     fill_in 'Topic', with: "things to divest"
     fill_in 'Outfit', with: "Silly hat"
 
@@ -30,7 +30,6 @@ feature 'User can create an event' do
     sign_in_as(carb)
     visit root_path
     click_link 'hang'
-
 
     select 'eat', from: 'What'
     select 'The Ratty', from: 'event_location_id'

@@ -1,1 +1,1 @@
-DOING RIGHT NOW: user has attribute @interests!! an array!
+DOING RIGHT NOW: user can update their interests, concentration, and class year

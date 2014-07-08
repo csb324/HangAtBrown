@@ -7,6 +7,9 @@ FactoryGirl.define do
     password "spicywith"
     phone_number { Faker::PhoneNumber.phone_number }
     class_year "Alumni"
+    interest_one "brunonia"
+    interest_two "psychoceramics"
+    interest_three "the meaning of life"
   end
 
   factory :event do
