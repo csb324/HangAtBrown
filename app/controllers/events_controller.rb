@@ -15,18 +15,28 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+
+    # Basic formatting inputs
     if @event.topic.present?
       @event.topic.downcase!
     end
 
-    @rsvp = @event.rsvps.first
+    # Making the time input get read in UTC
+    # @event.start_time = @event.start_time.utc
+    # @event.end_time = @event.end_time.utc
 
+    # There should only be one RSVP in the array anyways, so we only look at the first
+    # If there's more than one, that's a problem!
+    @rsvp = @event.rsvps.first
     @rsvp.user = current_user
     @rsvp.event = @event
+
     @rsvp.expected_arrival = @event.start_time
     @rsvp.creator = true
 
     @location = @event.location
+
+    binding.pry
 
     if @event.save
       redirect_to @location, notice: "Event saved!"
@@ -37,7 +47,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
