@@ -23,4 +23,15 @@ feature 'User creates new account' do
 
   end
 
+  scenario 'unsuccessfully' do
+    visit root_path
+    click_link "sign up"
+    fill_in 'First name', with: 'Butt'
+
+    click_button 'Sign up'
+
+    expect(page).to have_content "prohibited this user from being saved"
+
+  end
+
 end
