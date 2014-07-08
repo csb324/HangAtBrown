@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   validate :start_time_cannot_be_after_end_time
 
   def start_time_cannot_be_in_the_past
-    if start_time < Time.now
+    if start_time < time_now
       errors.add(:start_time, "can't be in the past")
     end
   end
@@ -29,6 +29,12 @@ class Event < ActiveRecord::Base
 
   def host
     rsvps.select{ |rsvp| rsvp.creator == true }.first.user
+  end
+
+  private
+
+  def time_now
+    Time.now.in_time_zone(ApplicationController::BROWN_TIME_ZONE)
   end
 
 end

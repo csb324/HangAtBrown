@@ -11,8 +11,8 @@ FactoryGirl.define do
 
   factory :event do
     location { Location.all.sample }
-    start_time Time.now + 2.hours
-    end_time (Time.now + 3.hours)
+    start_time Time.now + 30.minutes
+    end_time Time.now + 3.hours
   end
 
   factory :location do
