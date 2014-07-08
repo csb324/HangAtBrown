@@ -15,6 +15,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    if @event.topic.present?
+      @event.topic.downcase!
+    end
 
     @rsvp = @event.rsvps.first
 

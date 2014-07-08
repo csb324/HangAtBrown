@@ -5,17 +5,14 @@ feature 'User can create an event' do
 
     carb = create(:user, last_name: 'carberry')
     ratty = create(:location, name: "The Ratty")
-
     sign_in_as(carb)
-
     visit root_path
-
     click_link 'hang'
 
     select 'eat', from: 'What'
-    select 'The Ratty', from: 'Where'
-    select '10:00 PM', from: 'Start time'
-    select '11:00 PM', from: 'End time'
+    select 'The Ratty', from: 'event[location_id]'
+    fill_in 'event_start_time', with: "7:00 pm"
+    fill_in 'event_end_time', with: "8:00 pm"
     fill_in 'Topic', with: "Nudity"
     fill_in 'Outfit', with: "Silly hat"
 
