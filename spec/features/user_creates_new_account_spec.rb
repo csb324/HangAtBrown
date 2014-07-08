@@ -19,7 +19,8 @@ feature 'User creates new account' do
 
     click_button 'Sign up'
 
-    expect(page).to have_content "The Blue Room"
+    expect(page).to have_content "Christina Paxson"
+    expect(page).to have_content "Math and shit"
 
   end
 
