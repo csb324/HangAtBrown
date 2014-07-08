@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :interests, dependent: :destroy
 
+  validates :first_name, :last_name, :email, :class_year, :concentration, :password, presence: true
+
 end

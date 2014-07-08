@@ -1,3 +1,0 @@
-class InterestsController < ApplicationController
-
-end

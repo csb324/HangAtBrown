@@ -1,1 +1,1 @@
-DOING RIGHT NOW: fixing heroku timezone problems
+DOING RIGHT NOW: user has three interests
