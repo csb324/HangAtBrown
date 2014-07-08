@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User views one location' do
-  scenario 'and all open events appear' do
+  scenario 'and open events appear' do
 
     carb = create(:user, last_name: 'carberry')
     ruth = create(:user, first_name: 'Ruth')
@@ -15,11 +15,13 @@ feature 'User views one location' do
 
     visit root_path
 
-    save_and_open_page
-
     click_link "The Ratty"
 
     expect(page).to have_content "Burgers"
 
   end
+
+  # scenario 'and events in the past do not appear' do
+  # end
+
 end
