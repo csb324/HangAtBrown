@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   resources :locations, only: [:index, :show]
+  resources :events
+  resources :rsvps
 
   authenticated :user do
     root to: 'locations#index', as: "signed_in"
   end
 
-  root 'locations#welcome'
+  root 'home#welcome'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

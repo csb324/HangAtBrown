@@ -38,11 +38,8 @@ feature 'User views one location' do
 
     click_link "The Ratty"
 
-    save_and_open_page
-
     expect(page).to have_content "Burgers"
     expect(page).to have_no_content "Physics"
-
 
   end
 

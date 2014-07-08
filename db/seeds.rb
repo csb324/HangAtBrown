@@ -17,5 +17,5 @@ Location.create!(name: "The Blue Room", description: "Muffins. Sandwiches. Kabob
 
 User.create!(email: "josiah_carburry@brown.edu", password: "spicywith", first_name: "Josiah", last_name: "Carburry", phone_number: "7034733719", class_year: "Alumni")
 
-Event.create!(location: Location.find_by_name("The Ratty"), start_time: Time.now, end_time: Time.now + 1.hour)
+Event.create!(location: Location.find_by_name("The Ratty"), start_time: Time.now, end_time: Time.now + 1.hour, event_type: "eat")
 Rsvp.create!(user: User.first, event: Event.first, expected_arrival: Time.now + 10.minutes, outfit: "red hat", creator: true)

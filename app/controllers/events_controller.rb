@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
   end
 
@@ -8,15 +10,26 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-
+    @event.rsvps.build
   end
 
   def create
     @event = Event.new(event_params)
-    @rsvp = Rsvp.new(user: current_user, event: @event, expected_arrival: event_params[:start_time], outfit: event_params[:outfit], creator: true)
 
-    if @rsvp.save && @event.save
-      redirect_to root_path
+    @rsvp = @event.rsvps.first
+
+    @rsvp.user = current_user
+    @rsvp.event = @event
+    @rsvp.expected_arrival = @event.start_time
+    @rsvp.creator = true
+
+    @location = @event.location
+
+    if @event.save
+      redirect_to @location, notice: "Event saved!"
+    else
+      flash.now[:alert] = @event.errors.full_messages.join(", ")
+      render :new
     end
   end
 
@@ -32,7 +45,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:start_time, :end_time, :location, :outfit, :topic)
+    params.require(:event).permit(:start_time, :end_time, :location_id, :topic, rsvps_attributes: [:outfit])
   end
 
 end

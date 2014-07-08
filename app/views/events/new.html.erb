@@ -1,0 +1,33 @@
+<%= form_for @event do |f| %>
+  <div class="field">
+    <%= f.label :event_type, 'What' %>
+    <%= f.select :event_type, Event::TYPES %>
+  </div>
+  <div class="field">
+    <%= f.label :location, 'Where' %><br>
+    <%= f.collection_select :location_id, Location.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time, 'From' %>
+    <%= f.time_field :start_time %>
+    <%= f.label :end_time, 'To' %>
+    <%= f.time_field :end_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :topic  %>
+    <%= f.text_field :topic %>
+  </div>
+
+  <div class="field">
+  <%= f.fields_for :rsvps do |rsvps_form| %>
+    <%= rsvps_form.label :outfit %>
+    <%= rsvps_form.text_field :outfit %>
+  <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
