@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   validate :start_time_cannot_be_after_end_time
 
   def start_time_cannot_be_in_the_past
-    if start_time < time_now
+    if start_time.correct_zone < Time.now
       errors.add(:start_time, "can't be in the past")
     end
   end
@@ -33,8 +33,8 @@ class Event < ActiveRecord::Base
 
   private
 
-  def time_now
-    Time.now.in_time_zone(ApplicationController::BROWN_TIME_ZONE)
+  def correct_zone(time)
+    time.in_time_zone(ApplicationController::BROWN_TIME_ZONE)
   end
 
 end
