@@ -1,0 +1,6 @@
+<% if event.event_type == "study" %>
+  <%= event.event_type %> <%=event.subjects.join(", ") %> with <%= event.host_nickname(current_user) %>
+<% else %>
+
+  <%= event.event_type %> with <%= event.host_nickname(current_user) %> and talk about <%= event.subjects.sample %>
+<% end %>

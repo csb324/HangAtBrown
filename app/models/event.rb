@@ -31,6 +31,14 @@ class Event < ActiveRecord::Base
     rsvps.select{ |rsvp| rsvp.creator == true }.first.user
   end
 
+  def host_nickname(currentuser)
+    if users.include? currentuser
+      host.first_name
+    else
+      host.first_name.first + "." + host.last_name.first + "."
+    end
+  end
+
   def subjects
     if topic.present?
       [topic]
@@ -43,6 +51,10 @@ class Event < ActiveRecord::Base
     has_started = start_time < Time.now
     has_not_ended = end_time > Time.now
     has_started && has_not_ended
+  end
+
+  def past
+    end_time < Time.now
   end
 
   private

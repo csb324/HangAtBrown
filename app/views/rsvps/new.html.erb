@@ -1,4 +1,4 @@
-<%= render 'events/single' %>
+<%= render 'events/single', event: @event %>
 
 <%= form_for [@event, @rsvp] do |f| %>
   <div class="field">

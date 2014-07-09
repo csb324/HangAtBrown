@@ -1,1 +1,10 @@
-<p>This is an event created by <%= @event.host.first_name %> </p>
+<div>
+  <p><%= event.start_time %> until <%= event.end_time %></p>
+
+  <%= link_to event_path(event) do %>
+    <p>
+      <%= render 'events/event_description', event: event %>
+    </p>
+  <% end %>
+
+</div>

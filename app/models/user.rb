@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
     [interest_one.downcase, interest_two.downcase, interest_three.downcase]
   end
 
+  def upcoming_events
+    events.select{ |event| !event.past }
+  end
+
 end

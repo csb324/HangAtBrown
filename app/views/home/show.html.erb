@@ -11,3 +11,7 @@
   <div>You haven't added any interests! <%= link_to "Edit your profile!", edit_user_registration_path %></div>
 <% end %>
 
+<% @user.upcoming_events.each do |event| %>
+  <p><%= event.location.name %> at <%= event.start_time %>:
+  <%= render 'events/event_description', event: event %></p>
+<% end %>
