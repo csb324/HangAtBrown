@@ -1,9 +1,13 @@
 <h3>right now</h3>
 <% @current_events.each do |event| %>
+<div>
   <p><%= event.host.first_name %> <%= event.host.last_name %> wants to talk about <%= event.event.subjects.join(", ") %> until <%= event.end_time %>  </p>
+  </div>
 <% end %>
 
 <h3>later today</h3>
 <% @future_events.each do |event| %>
+<div>
   <p><%= event.host.first_name %> <%= event.host.last_name %> wants to talk about <%= event.subjects.join(", ") %> from <%= event.start_time %> until <%= event.end_time %> </p>
+  </div>
 <% end %>

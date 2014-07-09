@@ -1,4 +1,4 @@
-DOING RIGHT NOW: event subjects appear in event index
+DOING RIGHT NOW: time dropdown is pretty!
 
 to-change:
 on event: make time a dropdown & increment by 15

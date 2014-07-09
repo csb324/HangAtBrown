@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+
+  $('#event_start_time').timepicker({
+    'minTime': 'now',
+    'scrollDefault': 'now'
+    });
+
+  $('#event_end_time').timepicker({
+    'minTime': 'now',
+    'scrollDefault': 'now'
+    });
+
+});
+
