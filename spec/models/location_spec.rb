@@ -46,5 +46,17 @@ describe Location do
     end
   end
 
+  describe '#future_events' do
+
+    it 'has events that are in the future' do
+      expect(@rock.future_events).to include(@study)
+    end
+
+    it 'does not have events that are not in the future' do
+      expect(@rock.future_events).not_to include(@study_afternoon)
+      expect(@rock.future_events).not_to include(@study_morning)
+    end
+
+  end
 
 end

@@ -10,4 +10,10 @@ class Location < ActiveRecord::Base
     end
   end
 
+  def future_events
+    events.select do |event|
+      event.start_time > Time.now
+    end
+  end
+
 end
