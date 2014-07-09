@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   resources :locations, only: [:index, :show]
-  resources :events
+  resources :events do
+    resources :rsvps, only: [:new, :create]
+  end
 
   authenticated :user do
     root to: 'locations#index', as: "signed_in"
