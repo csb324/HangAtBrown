@@ -8,6 +8,7 @@ describe Event do
     @ruth = create(:user, first_name: "Ruth")
     # add a normal event, without a topic
     @lunch = create(:event_with_host, user: @ruth, event_type: "eat")
+    @cram_sesh = create(:event_with_host, user: @ruth, topic: "Economics")
   end
 
   describe '#initialize' do
@@ -18,8 +19,14 @@ describe Event do
 
   describe '#host' do
     it 'has a host, who is the person with a creator rsvp' do
-      binding.pry
       expect(@lunch.host).to eq @ruth
     end
   end
+
+  describe '#subjects' do
+    it 'if it has a topic, the topic is the subject' do
+      expect(@cram_sesh.subjects).to contain_exactly "Economics"
+    end
+  end
+
 end

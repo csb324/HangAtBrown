@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
     if topic.present?
       [topic]
     else
-       host.all_subjects
+       host.all_interests
     end
   end
   private
