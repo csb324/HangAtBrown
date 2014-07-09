@@ -1,0 +1,13 @@
+<div><%= f.label :phone_number %><br />
+<%= f.text_field :phone_number %></div>
+
+<div><%= f.label :class_year %><br />
+<%= f.select :class_year, User::CLASS_YEARS, include_blank: true %></div>
+
+<div><%= f.label :concentration %><br />
+<%= f.text_field :concentration %></div>
+
+<h3>Interests</h3>
+<div><%= f.text_field :interest_one %></div>
+<div><%= f.text_field :interest_two %></div>
+<div><%= f.text_field :interest_three %></div>

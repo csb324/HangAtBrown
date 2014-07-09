@@ -6,7 +6,7 @@ FactoryGirl.define do
     email { rand(1000).to_s << "@brown.edu"}
     password "spicywith"
     phone_number { Faker::PhoneNumber.phone_number }
-    class_year "Alumni"
+    class_year "Alum"
     interest_one "brunonia"
     interest_two "psychoceramics"
     interest_three "the meaning of life"

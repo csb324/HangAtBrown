@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User updates account' do
+feature 'User edits profile' do
   scenario 'successfully' do
 
     carb = create(:user)
@@ -14,7 +14,7 @@ feature 'User updates account' do
     fill_in 'user_interest_two', with: 'cheese'
     fill_in 'user_interest_three', with: 'spicy'
 
-    fill_in 'Class year', with: 'Senior'
+    select 'Senior', from: 'Class year'
     fill_in 'Phone number', with: '4448885555'
     fill_in 'Current password', with: carb.password
 

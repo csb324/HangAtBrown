@@ -22,6 +22,4 @@ class Location < ActiveRecord::Base
       event.start_time > range_begin && event.start_time < Time.now
     end
   end
-
-
 end

@@ -11,7 +11,7 @@ feature 'User creates new account' do
     fill_in 'Last name', with: 'Paxson'
     fill_in 'Email', with: 'cpax@brown.edu'
     fill_in 'Phone number', with: '401-867-5309'
-    fill_in 'Class year', with: 'Faculty'
+    select 'Faculty', from: 'Class year'
     fill_in 'Concentration', with: 'Math and shit'
     fill_in 'Password', with: 'ruthrocks'
     fill_in 'Password confirmation', with: 'ruthrocks'
