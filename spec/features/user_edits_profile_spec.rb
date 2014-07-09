@@ -10,8 +10,6 @@ feature 'User updates account' do
     click_link carb.first_name
     click_link "edit"
 
-    save_and_open_page
-
     fill_in 'user_interest_one', with: 'chicken'
     fill_in 'user_interest_two', with: 'cheese'
     fill_in 'user_interest_three', with: 'spicy'
