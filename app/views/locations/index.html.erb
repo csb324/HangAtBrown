@@ -3,6 +3,6 @@
   <h2><%= link_to location.name, location %></h2>
   <p><%= location.description %> </p>
   <p><%= location.current_events.count %> hanging now</p>
-  <p><%= location.events_since(1.day).count %> hangs today</p>
+  <p><%= location.future_events.count %> hanging later</p>
   </div>
 <% end %>

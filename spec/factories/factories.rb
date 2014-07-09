@@ -13,14 +13,14 @@ FactoryGirl.define do
   end
 
   factory :event do
-    location
+    location { Location.all.sample }
     start_time Time.now + 30.minutes
     end_time Time.now + 3.hours
     event_type "have coffee"
 
     factory :event_with_host do
       ignore do
-        user create(:user)
+        user { User.all.sample }
       end
 
       after(:create) do |event, evaluator|

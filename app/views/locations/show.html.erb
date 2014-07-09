@@ -1,6 +1,6 @@
 <h3>right now</h3>
 <% @current_events.each do |event| %>
-  <%= link_to new_event_rsvp_path(event.id) do %>
+  <%= link_to event_path(event) do %>
   <div>
     <p><%= event.host.first_name %> <%= event.host.last_name %> wants to talk about <%= event.subjects.join(", ") %> until <%= event.end_time %>  </p>
   </div>
@@ -9,7 +9,7 @@
 
 <h3>later today</h3>
 <% @future_events.each do |event| %>
-<%= link_to new_event_rsvp_path(event.id) do %>
+<%= link_to event_path(event) do %>
 <div>
   <p><%= event.host.first_name %> <%= event.host.last_name %> wants to talk about <%= event.subjects.join(", ") %> from <%= event.start_time %> until <%= event.end_time %> </p>
   </div>
