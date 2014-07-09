@@ -37,7 +37,5 @@ feature 'User views an individual hang' do
 
     expect(page).to have_content "Awesome!"
     expect(page).to have_content "will be wearing"
-
   end
-
 end
