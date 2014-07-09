@@ -16,4 +16,12 @@ class Location < ActiveRecord::Base
     end
   end
 
+  def events_since(time)
+    range_begin = Time.now - time
+    events.select do |event|
+      event.start_time > range_begin && event.start_time < Time.now
+    end
+  end
+
+
 end
