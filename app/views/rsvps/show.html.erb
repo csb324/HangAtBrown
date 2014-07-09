@@ -1,3 +1,5 @@
 <p>
 You're hanging with <%= @event.host.first_name %> at <%= @event.location.name %> today at <%= @rsvp.arrival_time_name %>. <%= @event.host.first_name %> will be wearing a <%= @event.host.rsvps.select{ |rsvp| rsvp.event == @event }.first.outfit %>.
 </p>
+<br>
+<%= link_to("cancel", event_rsvp_path(@event, @rsvp), method: :delete) %>

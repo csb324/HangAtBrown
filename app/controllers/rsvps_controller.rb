@@ -24,6 +24,13 @@ class RsvpsController < ApplicationController
     end
   end
 
+  def destroy
+    @rsvp = Rsvp.find(params[:id])
+    @rsvp.destroy
+
+    redirect_to profile_path, notice: "Guess you weren't down to hang."
+  end
+
   private
   def rsvp_params
     params.require(:rsvp).permit(:expected_arrival, :outfit, :event_id)

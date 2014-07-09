@@ -16,35 +16,31 @@ feature 'User views one location' do
     click_link "The Ratty"
     expect(page).to have_content "Burgers"
 
-    visit root_path
-    click_link "Jo's"
-    expect(page).to have_content "brunonia"
-
   end
 
-  scenario 'and events in the past do not appear' do
+  # scenario 'and events in the past do not appear' do
 
-    carb = create(:user)
-    ruth = create(:user, first_name: 'Ruth')
-    ratty = create(:location, name: "The Ratty")
-    sign_in_as(carb)
+  #   carb = create(:user)
+  #   ruth = create(:user, first_name: 'Ruth')
+  #   ratty = create(:location, name: "The Ratty")
+  #   sign_in_as(carb)
 
-    #Imagine another event exists that occurred in the past
-    event_two = build(:event, location: ratty, topic: "Physics", event_type: "study", start_time: Time.now - 1.day, end_time: Time.now - 16.hours)
-    #So that I can create the event overriding the validations
-    event_two.save(validate: false)
-    event_two_rsvp = create(:rsvp, user: ruth, event: event_two, creator: true)
+  #   #Imagine another event exists that occurred in the past
+  #   event_two = build(:event, location: ratty, topic: "Physics", event_type: "study", start_time: Time.now - 1.day, end_time: Time.now - 16.hours)
+  #   #So that I can create the event overriding the validations
+  #   event_two.save(validate: false)
+  #   event_two_rsvp = create(:rsvp, user: ruth, event: event_two, creator: true)
 
-    event_one = create(:event, location: ratty, topic: "Burgers", event_type: "eat")
-    event_one_rsvp = create(:rsvp, user: ruth, event: event_one, creator: true)
+  #   event_one = create(:event, location: ratty, topic: "Burgers", event_type: "eat")
+  #   event_one_rsvp = create(:rsvp, user: ruth, event: event_one, creator: true)
 
-    visit root_path
+  #   visit root_path
 
-    click_link "The Ratty"
+  #   click_link "The Ratty"
 
-    expect(page).to have_content "Burgers"
-    expect(page).to have_no_content "Physics"
+  #   expect(page).to have_content "Burgers"
+  #   expect(page).to have_no_content "Physics"
 
-  end
+  # end
 
 end

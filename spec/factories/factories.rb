@@ -24,7 +24,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |event, evaluator|
-        event.rsvps << create(:rsvp, event: event, user: evaluator.user, creator: true)
+        event.rsvps << create(:rsvp, event: event, user: evaluator.user, expected_arrival: Time.now + 45.minutes, creator: true)
       end
     end
 
