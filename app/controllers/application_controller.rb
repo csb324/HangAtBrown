@@ -4,5 +4,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   BROWN_TIME_ZONE = 'Eastern Time (US & Canada)'
-
+  helper :all
 end

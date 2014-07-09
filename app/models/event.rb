@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
+  include ApplicationHelper
+
   TYPES = ["eat", "have coffee", "study", "read", "write"]
 
   belongs_to :location
@@ -55,6 +57,14 @@ class Event < ActiveRecord::Base
 
   def past
     end_time < Time.now
+  end
+
+  def start_time_name
+    nice_time(start_time)
+  end
+
+  def end_time_name
+    nice_time(end_time)
   end
 
   private

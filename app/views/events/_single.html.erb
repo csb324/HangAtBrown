@@ -1,10 +1,9 @@
 <div>
-  <p><%= event.start_time %> until <%= event.end_time %></p>
+  <p><%= event.start_time_name %> until <%= event.end_time_name %></p>
 
   <%= link_to event_path(event) do %>
     <p>
       <%= render 'events/event_description', event: event %>
     </p>
   <% end %>
-
 </div>

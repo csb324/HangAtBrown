@@ -1,5 +1,7 @@
 class Rsvp < ActiveRecord::Base
 
+  include ApplicationHelper
+
   belongs_to :user
   belongs_to :event
 
@@ -21,6 +23,10 @@ class Rsvp < ActiveRecord::Base
     if expected_arrival < Time.now
       errors.add(:expected_arrival, "can't be in the past")
     end
+  end
+
+  def arrival_time_name
+    nice_time(expected_arrival)
   end
 
   validates :user, uniqueness: { scope: :event, message: ": You are already hanging out here!" }
