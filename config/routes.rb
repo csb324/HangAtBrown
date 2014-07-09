@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:index, :show]
   resources :events do
-    resources :rsvps, only: [:new, :create]
+    resources :rsvps, only: [:new, :create, :show]
   end
 
   authenticated :user do

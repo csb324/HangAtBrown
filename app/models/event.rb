@@ -38,6 +38,7 @@ class Event < ActiveRecord::Base
        host.all_interests
     end
   end
+
   private
 
 end

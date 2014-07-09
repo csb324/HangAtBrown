@@ -1,0 +1,15 @@
+<%= render 'events/single' %>
+
+<%= form_for [@event, @rsvp] do |f| %>
+  <div class="field">
+  <%= f.label :expected_arrival, "I'll be there at" %>
+  <%= f.text_field :expected_arrival %>
+  </div>
+
+  <div class="field">
+  <%= f.label :outfit, "What are you wearing? ;)" %>
+  <%= f.text_field :outfit %>
+  </div>
+
+  <%= f.submit "join" %>
+<% end %>
