@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'User views one location' do
   scenario 'and open events appear' do
-
     carb = create(:user, last_name: 'carberry')
     ruth = create(:user, first_name: 'Ruth')
 
@@ -10,14 +9,16 @@ feature 'User views one location' do
 
     ratty = create(:location, name: "The Ratty")
     jos = create(:location, name: "Jo's")
-    event_one = create(:event, location: ratty, topic: "Burgers", event_type: "eat")
-    event_oner = create(:rsvp, user: ruth, event: event_one, creator: true)
+    event_one = create(:event_with_host, location: ratty, topic: "Burgers", event_type: "eat", user: ruth)
+    event_two = create(:event_with_host, location: jos, user: ruth)
 
     visit root_path
-
     click_link "The Ratty"
-
     expect(page).to have_content "Burgers"
+
+    visit root_path
+    click_link "Jo's"
+    expect(page).to have_content "brunonia"
 
   end
 

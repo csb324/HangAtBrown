@@ -5,5 +5,5 @@
 
 <h3>later today</h3>
 <% @future_events.each do |event| %>
-  <p><%= event.host.first_name %> <%= event.host.last_name %> wants to talk about <%= event.topic %> from <%= event.start_time %> until <%= event.end_time %> </p>
+  <p><%= event.host.first_name %> <%= event.host.last_name %> wants to talk about <%= event.subjects.join(", ") %> from <%= event.start_time %> until <%= event.end_time %> </p>
 <% end %>
