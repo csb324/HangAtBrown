@@ -1,4 +1,4 @@
-DOING RIGHT NOW: UNIT TESTING! location knows about its events, its future-events, and its current-events
+DOING RIGHT NOW: improve location controller now!
 
 
 to-change:

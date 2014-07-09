@@ -8,7 +8,8 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @events = @location.events.select{ |e| e.end_time > Time.now }
+    @current_events = @location.current_events.sort_by { |e| e.end_time }
+    @future_events = @location.future_events.sort_by { |e| e.start_time }
   end
 
 end
