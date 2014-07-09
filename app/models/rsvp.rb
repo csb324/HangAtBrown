@@ -6,7 +6,8 @@ class Rsvp < ActiveRecord::Base
   validates! :user, :event, presence: true
   validates :expected_arrival, :outfit, presence: true
 
-  validates :expected_arrival_must_be_during_event
+  validate :expected_arrival_must_be_during_event
+  validate :expected_arrival_cannot_be_in_the_past
 
   def expected_arrival_must_be_during_event
     if event.start_time > expected_arrival

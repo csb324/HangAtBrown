@@ -39,6 +39,12 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def current
+    has_started = start_time < Time.now
+    has_not_ended = end_time > Time.now
+    has_started && has_not_ended
+  end
+
   private
 
 end
