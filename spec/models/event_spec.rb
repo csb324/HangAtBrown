@@ -7,8 +7,7 @@ describe Event do
     # add a user
     @ruth = create(:user, first_name: "Ruth")
     # add a normal event, without a topic
-    @lunch = create(:event, event_type: "eat")
-    @lunch_creation = create(:rsvp, event: @lunch, user: @ruth, creator: true)
+    @lunch = create(:event_with_host, user: @ruth, event_type: "eat")
   end
 
   describe '#initialize' do
@@ -17,10 +16,10 @@ describe Event do
     end
   end
 
-  describe '#subjects' do
-    it "is the host's interests, if no topic exists" do
-
+  describe '#host' do
+    it 'has a host, who is the person with a creator rsvp' do
+      binding.pry
+      expect(@lunch.host).to eq @ruth
     end
   end
-
 end

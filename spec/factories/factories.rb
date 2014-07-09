@@ -13,10 +13,21 @@ FactoryGirl.define do
   end
 
   factory :event do
-    location { Location.all.sample }
-    start_time (Time.now + 30.minutes).utc
-    end_time (Time.now + 3.hours).utc
-    event_type { Event::TYPES.sample }
+    location
+    start_time Time.now + 30.minutes
+    end_time Time.now + 3.hours
+    event_type "have coffee"
+
+    factory :event_with_host do
+      ignore do
+        user create(:user)
+      end
+
+      after(:create) do |event, evaluator|
+        event.rsvps << create(:rsvp, event: event, user: evaluator.user, creator: true)
+      end
+    end
+
   end
 
   factory :location do
@@ -26,8 +37,8 @@ FactoryGirl.define do
   end
 
   factory :rsvp do
-    user { User.all.sample }
-    event Event.last
+    user
+    event
     expected_arrival Time.now + 2.hours
     outfit "Kberg Cape"
     creator false
