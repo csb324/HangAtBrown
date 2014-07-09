@@ -33,8 +33,8 @@ feature 'User can create an event' do
 
     select 'eat', from: 'What'
     select 'The Ratty', from: 'event_location_id'
-    fill_in 'event_start_time', with: "7:00 am"
-    fill_in 'event_end_time', with: "8:00 am"
+    fill_in 'event_start_time', with: "12:00 am"
+    fill_in 'event_end_time', with: "1:00 am"
     fill_in 'Topic', with: "Balloons"
     fill_in 'Outfit', with: "Silly hat"
 

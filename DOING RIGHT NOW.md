@@ -1,6 +1,4 @@
-DOING RIGHT NOW: making a user-form partial bc yeahhh
-
+DOING RIGHT NOW: events have subjects based on either topic or user's interests
 
 to-change:
-on profile: make class-year a dropdown
 on event: make time a dropdown & increment by 15

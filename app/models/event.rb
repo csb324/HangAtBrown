@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :location
 
-  has_many :rsvps, dependent: :destroy
+  has_many :rsvps
   has_many :users, through: :rsvps
 
   accepts_nested_attributes_for :rsvps
@@ -31,6 +31,13 @@ class Event < ActiveRecord::Base
     rsvps.select{ |rsvp| rsvp.creator == true }.first.user
   end
 
+  def subjects
+    if topic.present?
+      [topic]
+    else
+       host.all_subjects
+    end
+  end
   private
 
 end
