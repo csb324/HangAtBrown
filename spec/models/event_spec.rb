@@ -27,6 +27,10 @@ describe Event do
     it 'if it has a topic, the topic is the subject' do
       expect(@cram_sesh.subjects).to contain_exactly "Economics"
     end
+
+    it 'if it has no topic, the hosts interests are the subjects' do
+      expect(@lunch.subjects).to contain_exactly "brunonia", "psychoceramics", "the meaning of life"
+    end
   end
 
 end
