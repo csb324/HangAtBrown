@@ -16,7 +16,7 @@
   <% @user.upcoming_events.each do |event| %>
     <%= link_to event_path(event) do %>
     <p><%= event.start_time_name %> at <%= event.location.name %>:
-    <%= render 'events/event_description', event: event %></p>
+    <%= event.event_description(current_user) %></p>
     <% end %>
   <% end %>
 <% else %>

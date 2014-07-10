@@ -48,6 +48,23 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def event_description(currentuser)
+    description = event_type.capitalize  # "Eat" // "Study"
+    if event_type == "study"
+      description += " "      # "study "
+    else
+      description += " and talk about " # "eat and talk about "
+    end
+    description += subjects.sample      # "eat and talk about politics" // "study economics"
+    description += " with "
+    if currentuser == host
+      other_people = users.count - 1
+      description += "#{other_people} other people (so far!)"
+    else
+      description += host_nickname(currentuser)
+    end
+  end
+
   # Time-saver
   def host_outfit
     rsvps.select{ |rsvp| rsvp.creator == true }.first.outfit

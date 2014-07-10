@@ -1,9 +1,7 @@
 <p>
-You're hanging with <%= @event.host.first_name %>
-at <%= @event.location.name %>
-today at <%= @rsvp.arrival_time_name %>.
-<%= @event.host.first_name %> will be wearing
+You're going to <%= @event.event_description(current_user) %>.
+<%= @event.host == current_user ? 'You' : @event.host.first_name %> will be wearing
 a <%= @event.host_outfit %>.
 </p>
 <br>
-<p>Can't make it? Don't be rude -- let <%= @event.host.first_name %> know. <%= link_to("cancel", event_rsvp_path(@event, @rsvp), method: :delete) %></p>
+<p>Can't make it? Don't leave <%= @event.host == current_user ? "everybody" : @event.host.first_name %> hanging! <%= link_to("cancel", event_rsvp_path(@event, @rsvp), method: :delete) %></p>

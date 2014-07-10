@@ -3,7 +3,7 @@
 
   <%= link_to event_path(event) do %>
     <p>
-      <%= render 'events/event_description', event: event %>
+      <%= event.event_description(current_user) %>
     </p>
   <% end %>
 </div>
