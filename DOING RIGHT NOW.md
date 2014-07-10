@@ -1,1 +1,1 @@
-DOING RIGHT NOW:
+DOING RIGHT NOW: Making the user profile more useful

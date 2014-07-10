@@ -30,12 +30,23 @@ class User < ActiveRecord::Base
     events.select{ |event| !event.past? }
   end
 
+  # Formats phone numbers to look nice. And accounts for country codes too! Wow!
+  def phone_number_pretty
+    pretty = "(" + phone_number.slice(-10..-8) + ")" + phone_number.slice(-7..-5) + "-" + phone_number.slice(-4..-1)
+    if phone_number.length > 10
+      code_length = phone_number.length - 10
+      pretty = "+" + phone_number.slice(0...code_length) + pretty
+    end
+    pretty
+  end
+
   private
 
+  # Takes symbols etc out of user input
   def format_phone_number
     self.phone_number = phone_number.gsub(/\D/, "")
   end
-
+  # Sends a text when you sign up!
   def send_welcome_text
     send_sms("You are now using Hang @ Brown! Feel free to add this number to your contacts.", phone_number: phone_number)
   end

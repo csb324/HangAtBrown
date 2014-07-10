@@ -2,8 +2,11 @@
 <br>
 <h2>Name: <%= @user.first_name %> <%= @user.last_name %> </h2>
 <p>Concentration: <%= @user.concentration %> </p>
+<p>Year: <%= @user.class_year %> </p>
+<p>Phone number: <%= @user.phone_number_pretty %> </p>
 
 <% if @user.all_interests.present? %>
+  <h3>Interests</h3>
   <% @user.all_interests.each do |interest| %>
     <p><%= interest %></p>
   <% end %>
