@@ -1,4 +1,5 @@
 <%= render 'events/single', event: @event %>
+<p><%= @event.users.count %> <%= @event.users.count == 1 ? "person" : "people" %> hanging out</p>
 
 <%= form_for [@event, @rsvp] do |f| %>
   <div class="field">

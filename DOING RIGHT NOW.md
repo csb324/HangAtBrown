@@ -1,1 +1,1 @@
-DOING RIGHT NOW: users can cancel and rsvp
+DOING RIGHT NOW:

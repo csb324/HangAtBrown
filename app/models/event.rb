@@ -41,6 +41,10 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def host_outfit
+    rsvps.select{ |rsvp| rsvp.creator == true }.first.outfit
+  end
+
   def subjects
     if topic.present?
       [topic]

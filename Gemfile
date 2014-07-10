@@ -38,7 +38,11 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# for users
 gem 'devise'
+
+# for texting
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'factory_girl_rails'
@@ -46,6 +50,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 
 group :test do
