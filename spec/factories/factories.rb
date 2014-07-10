@@ -5,7 +5,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     email { rand(1000).to_s << "@brown.edu"}
     password "spicywith"
-    phone_number { Faker::PhoneNumber.phone_number }
+    phone_number "1 (571) 308-8997"
     class_year "Alum"
     interest_one "brunonia"
     interest_two "psychoceramics"

@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :email, :phone_number, presence: true
   validates :class_year, inclusion: {in: CLASS_YEARS}
-  validates :phone_number, length: { is: 10 }
+  validates :phone_number, length: { in: 10..15 }
 
   after_create :send_welcome_text
 
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_events
-    events.select{ |event| !event.past }
+    events.select{ |event| !event.past? }
   end
 
   private
