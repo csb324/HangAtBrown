@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_text
-    send_sms(message: "You are now using Hang @ Brown! Feel free to add this number to your contacts.", phone_number: phone_number)
+    send_sms("You are now using Hang @ Brown! Feel free to add this number to your contacts.", phone_number: phone_number)
   end
 
 end

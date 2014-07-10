@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   # Twilio!
-  def send_sms(message:, phone_number: nil, recipient: nil)
+  def send_sms(message, phone_number: nil, recipient: nil)
     if phone_number.present?
       number_to_send_to = phone_number
       address = phone_number
