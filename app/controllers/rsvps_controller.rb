@@ -18,8 +18,8 @@ class RsvpsController < ApplicationController
 
     if @rsvp.save
       redirect_to event_rsvp_path(@event, @rsvp), notice: "Awesome!"
-      send_sms(current_user, "You're hanging out with #{@event.host.first_name} today at #{@event.location.name} at #{@rsvp.arrival_time_name}. #{@event.host.first_name} will be wearing a #{@event.host_outfit}!")
-      send_sms(@event.host, "You've got a hang! #{current_user.first_name} is wearing a #{@rsvp.outfit}, and will be at #{@event.location.name} at #{@rsvp.arrival_time_name}")
+      send_sms(user: current_user, message: "You're hanging out with #{@event.host.first_name} today at #{@event.location.name} at #{@rsvp.arrival_time_name}. #{@event.host.first_name} will be wearing a #{@event.host_outfit}!")
+      send_sms(user: @event.host, message: "You've got a hang! #{current_user.first_name} is wearing a #{@rsvp.outfit}, and will be at #{@event.location.name} at #{@rsvp.arrival_time_name}")
     else
       flash.now[:alert] = @rsvp.errors.full_messages.join(", ")
       render :new
@@ -29,16 +29,17 @@ class RsvpsController < ApplicationController
   def destroy
     @rsvp = Rsvp.find(params[:id])
 
-    # Send a text if someone cancels!
+    # Hang @ brown will send you a text if someone cancels on you!
+
     @cancellation_message = "Oh no! #{current_user.first_name} can no longer hang at #{@rsvp.arrival_time_name} at #{@event.location.name}. Hang again soon!"
     if @rsvp.creator == true
       # If the host cancels, text everyone else
       @event.users.each do |person|
-        send_sms(person, @cancellation_message) unless person == current_user
+        send_sms(user: person, message: @cancellation_message) unless person == current_user
       end
     else
-      # If a guest cancels, only text the host
-      send_sms(@event.host, @cancellation_message)
+      # If a guest cancels, only text the host, not everyone
+      send_sms(user: @event.host, message: @cancellation_message)
     end
 
     @rsvp.destroy
@@ -53,22 +54,4 @@ class RsvpsController < ApplicationController
   def set_event
     @event = Event.find(params[:event_id])
   end
-
-  # Twilio!
-  def send_sms(recipient, message)
-    number_to_send_to = recipient.phone_number
-
-    twilio_sid = ENV['TWILIO_ID']
-    twilio_token = ENV['TWILIO_TOKEN']
-    twilio_phone_number = ENV['TWILIO_NUMBER']
-
-    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-
-    @twilio_client.account.sms.messages.create(
-      from: twilio_phone_number,
-      to: number_to_send_to,
-      body: message
-    )
-  end
-
 end

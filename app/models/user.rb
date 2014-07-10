@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  include ApplicationHelper
+
   CLASS_YEARS = ["First year", "Sophomore", "Junior", "Senior", "Grad Student", "Alum", "Faculty"]
 
   before_validation(on: :create) do
@@ -18,6 +20,8 @@ class User < ActiveRecord::Base
   validates :class_year, inclusion: {in: CLASS_YEARS}
   validates :phone_number, length: { is: 10 }
 
+  after_create :send_welcome_text
+
   def all_interests
     [interest_one.downcase, interest_two.downcase, interest_three.downcase]
   end
@@ -29,8 +33,11 @@ class User < ActiveRecord::Base
   private
 
   def format_phone_number
-    new_number = phone_number.gsub(/\D/, "")
-    update(phone_number: new_number)
+    self.phone_number = phone_number.gsub(/\D/, "")
+  end
+
+  def send_welcome_text
+    send_sms(message: "You are now using Hang @ Brown! Feel free to add this number to your contacts.", phone_number: phone_number)
   end
 
 end
