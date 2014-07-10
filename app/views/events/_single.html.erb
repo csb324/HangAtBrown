@@ -3,7 +3,7 @@
 
   <%= link_to event_path(event) do %>
     <p>
-      <%= event.event_description(current_user) %>
+      <%= event.event_description(current_user).capitalize %>
     </p>
   <% end %>
 </div>

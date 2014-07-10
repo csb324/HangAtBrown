@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>hang@brown</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,21 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
-  <% if user_signed_in? %>
-    <%= link_to "hang@brown", root_path %>
-    <%= link_to "log out", destroy_user_session_path, method: :delete %>
-    <%= link_to current_user.first_name, profile_path %>
-    <%= link_to "hang", new_event_path %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "sign up", new_user_registration_path %>
-  <% end %>
-</nav>
 
-<p class="notice"><%= flash[:notice] %></p>
-<p class="alert"><%= flash[:alert] %></p>
+<div class="container main">
+
+<%= render 'shared/nav_bar' %>
+<div class="container">
+<% if flash[:notice].present? %><p class="alert alert-success"><%= flash[:notice] %></p><% end %>
+<% if flash[:alert].present? %><p class="alert"><%= flash[:alert] %></p><% end %>
+
 <%= yield %>
-
+</div>
+</div>
 </body>
 </html>

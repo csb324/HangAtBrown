@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+<nav class="navbar">
+    <div class="navbar-nav navbar-left nav">
+      <div class="navbar-header">
+        <%= link_to "hang@brown", root_path, class: "navbar-brand" %>
+      </div>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "hang", new_event_path, class: "hang-button" %></li>
+      <li><%= link_to current_user.first_name, profile_path %></li>
+      <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </ul>
+</nav>
+<% end %>

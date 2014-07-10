@@ -1,3 +1,5 @@
+<h1><%= @location.name %></h1>
+<p><%= @location.description %></p>
 <h3>right now</h3>
 <% @current_events.each do |event| %>
   <%= render 'events/single', event: event %>

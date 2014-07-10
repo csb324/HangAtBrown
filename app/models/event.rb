@@ -49,7 +49,7 @@ class Event < ActiveRecord::Base
   end
 
   def event_description(currentuser)
-    description = event_type.capitalize  # "Eat" // "Study"
+    description = event_type  # "Eat" // "Study"
     if event_type == "study"
       description += " "      # "study "
     else
