@@ -5,11 +5,24 @@ class Rsvp < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
 
+  # If there's no user, something is seriously wrong.
   validates! :user, :event, presence: true
+
+  # User should definitely input these fields
   validates :expected_arrival, :outfit, presence: true
+
+  # You can't rsvp to an event that you've already rsvp-ed to, silly
+  validates :user, uniqueness: { scope: :event, message: ": You are already hanging out here!" }
 
   validate :expected_arrival_must_be_during_event
   validate :expected_arrival_cannot_be_in_the_past
+  validate :event_does_not_already_have_host
+
+  def event_does_not_already_have_host
+    if creator == true && event.all_hosting_rsvps.length > 1
+      errors.add(:user, "cannot host an event that already exists")
+    end
+  end
 
   def expected_arrival_must_be_during_event
     if event.start_time > expected_arrival
@@ -25,9 +38,9 @@ class Rsvp < ActiveRecord::Base
     end
   end
 
+  # Convenience for time formatting
   def arrival_time_name
     nice_time(expected_arrival)
   end
 
-  validates :user, uniqueness: { scope: :event, message: ": You are already hanging out here!" }
 end

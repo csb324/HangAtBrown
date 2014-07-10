@@ -25,32 +25,24 @@ class EventsController < ApplicationController
       @event.topic.downcase!
     end
 
+    # Creating the automatic rsvp for the host
+
+    @rsvp = @event.rsvps.first
     # There should only be one RSVP in the array anyways, so we only look at the first
     # If there's more than one, that's a problem!
-    @rsvp = @event.rsvps.first
+
     @rsvp.user = current_user
     @rsvp.event = @event
 
     @rsvp.expected_arrival = @event.start_time
     @rsvp.creator = true
 
-    @location = @event.location
-
     if @event.save
-      redirect_to @location, notice: "Event saved!"
+      redirect_to @event.location, notice: "Event saved!"
     else
       flash.now[:alert] = @event.errors.full_messages.join(", ")
       render :new
     end
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private
