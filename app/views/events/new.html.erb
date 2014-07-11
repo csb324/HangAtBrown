@@ -1,33 +1,43 @@
+<div class="row new_event_form_page">
+<h1>Let's hang.</h1>
 <%= form_for @event do |f| %>
-  <div class="field">
-    <%= f.label :event_type, 'What' %>
-    <%= f.select :event_type, Event::TYPES %>
+  <div class="form-label col-sm-6">
+    <%= f.label :event_type, 'What:' %>
   </div>
-  <div class="field">
-    <%= f.label :location, 'Where' %>
-    <%= f.collection_select :location_id, Location.all, :id, :name %>
+  <div class="col-sm-6">
+    <%= f.select :event_type, Event::TYPES, {}, {class: "form-control"} %>
+ </div>
+  <div class="form-label col-sm-6">
+    <%= f.label :location, 'Where:' %>
+    </div>
+  <div class="col-sm-6">
+    <%= f.collection_select :location_id, Location.all, :id, :name , {}, {class: "form-control"} %>
+</div>
+  <div class="col-sm-6 form-label">
+    <%= f.label :start_time, 'When:' %>
   </div>
-
-  <div class="field">
-    <%= f.label :start_time, 'From' %>
+  <div class="col-sm-6 time-inputs">
     <%= f.text_field :start_time %>
-    <%= f.label :end_time, 'To' %>
+    <%= f.label :end_time, 'to' %>
     <%= f.text_field :end_time %>
   </div>
 
-  <div class="field">
-    <%= f.label :topic  %>
-    <%= f.text_field :topic %>
+  <div class="form-label col-sm-6">
+    <%= f.label :topic, "Something on your mind?"  %>
   </div>
-
+  <div class="col-sm-6">
+    <%= f.text_field :topic, {class: "form-control"}%>
+  </div>
+  <p class="help-block">This is an optional field!</p>
+  <div class="col-sm-12">
   <%= f.fields_for :rsvps do |rsvps_form| %>
     <%= render 'rsvps/outfit_picker', f: rsvps_form %>
   <% end %>
-
+  <br>
   <div class="actions">
-    <%= f.submit "hang" %>
+    <%= f.submit "hang", class: "form-control"%>
+  </div>
+
   </div>
 <% end %>
-
-
-
+</div>

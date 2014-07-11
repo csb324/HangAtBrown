@@ -1,5 +1,5 @@
   <h3>What are you wearing?</h3>
-  <div class="field">
-    <%= f.select :outfit_color, Rsvp::COLORS %>
-    <%= f.select :outfit_object, Rsvp::OBJECTS %>
+  <div class="field outfit">
+    <%= f.select :outfit_color, Rsvp::COLORS,  {}, {class: "form-control"} %>
+    <%= f.select :outfit_object, Rsvp::OBJECTS,  {}, {class: "form-control"} %>
   </div>
