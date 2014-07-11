@@ -6,7 +6,8 @@ $serif: Georgia, Times, "Times New Roman", serif;
 $sans-serif: 'Open Sans', sans-serif;
 
 $light-neutral-color: #F9F8F3;
-$brown: #3A1E1A; //or maybe #523528
+$other-brown: #3A1E1A; //or maybe
+$brown: #523528;
 $red: #C00404;
 $other-red: #E00031;
 
@@ -26,6 +27,9 @@ body {
   &.main {
     height: 100%;
     padding: 0;
+  }
+  &.content {
+    padding-top: 15px;
   }
 }
 

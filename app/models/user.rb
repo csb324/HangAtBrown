@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   # Formats phone numbers to look nice. And accounts for country codes too! Wow!
   def phone_number_pretty
-    pretty = "(" + phone_number.slice(-10..-8) + ")" + phone_number.slice(-7..-5) + "-" + phone_number.slice(-4..-1)
+    pretty = "(" + phone_number.slice(-10..-8) + ") " + phone_number.slice(-7..-5) + " - " + phone_number.slice(-4..-1)
     if phone_number.length > 10
       code_length = phone_number.length - 10
       pretty = "+" + phone_number.slice(0...code_length) + pretty

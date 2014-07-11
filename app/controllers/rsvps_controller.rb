@@ -16,6 +16,8 @@ class RsvpsController < ApplicationController
     @rsvp.user = current_user
     @rsvp.event = @event
 
+    @rsvp.outfit = rsvp_params["outfit_color"].downcase + " " + rsvp_params["outfit_object"]
+
     if @rsvp.save
       redirect_to event_rsvp_path(@event, @rsvp), notice: "Awesome!"
       send_sms("You're hanging out with #{@event.host.first_name} today at #{@event.location.name} at #{@rsvp.arrival_time_name}. #{@event.host.first_name} will be wearing a #{@event.host_outfit}!", recipient: current_user)
@@ -48,7 +50,7 @@ class RsvpsController < ApplicationController
 
   private
   def rsvp_params
-    params.require(:rsvp).permit(:expected_arrival, :outfit, :event_id)
+    params.require(:rsvp).permit(:expected_arrival, :event_id, :outfit_color, :outfit_object)
   end
 
   def set_event
