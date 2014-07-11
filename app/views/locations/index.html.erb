@@ -1,7 +1,19 @@
-<% @locations.each do |location| %>
-  <div>
-  <h2><%= link_to location.name, location %></h2>
-  <p><%= location.current_events.count %> hanging now</p>
-  <p><%= location.future_events.count %> hanging later</p>
-  </div>
-<% end %>
+<div class="row">
+  <% @locations.each do |location| %>
+    <div class="col-md-4 col-sm-6 location-window">
+    <div class="row handy-row">
+      <div class="location-window-info">
+        <div class="row">
+          <div class="col-sm-7">
+            <p class="location-name"><%= link_to location.name, location %></p>
+          </div>
+          <div class="col-sm-5">
+            <p class="location-details"><%= location.current_events.count %> hanging now</p>
+            <p class="location-details"><%= location.future_events.count %> hanging later</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  <% end %>
+</div>

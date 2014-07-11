@@ -1,1 +1,1 @@
-DOING RIGHT NOW: Making the user profile more useful
+DOING RIGHT NOW: making the signed-in home pretty
