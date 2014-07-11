@@ -11,13 +11,14 @@ Location.delete_all
 Event.delete_all
 Rsvp.delete_all
 
-FactoryGirl.create(:location, name: "The Ratty")
-FactoryGirl.create(:location, name: "The SciLi Mezz")
-FactoryGirl.create(:location, name: "The Blue Room")
-FactoryGirl.create(:location, name: "Jo's")
-FactoryGirl.create(:location, name: "The Rock")
-FactoryGirl.create(:location, name: "The SciLi 3rd Floor")
-FactoryGirl.create(:location, name: "The Ivy Room")
+FactoryGirl.create(:location, name: "The Ratty", url: "ratty.jpg")
+FactoryGirl.create(:location, name: "The SciLi Basement", url: "scili-basement.jpg")
+FactoryGirl.create(:location, name: "The Blue Room", url: "blue-room.jpg")
+FactoryGirl.create(:location, name: "Jo's", url: "jos.jpg")
+FactoryGirl.create(:location, name: "The Rock", url: "rock.jpg")
+FactoryGirl.create(:location, name: "The SciLi 3rd Floor", url: "scili-3.jpg")
+FactoryGirl.create(:location, name: "The Ivy Room", url: "ivy-room.jpg")
+
 FactoryGirl.create_list(:user, 10)
 
 FactoryGirl.create_list(:event_with_host, 5)

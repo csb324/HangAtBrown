@@ -1,7 +1,7 @@
 <div class="row">
   <% @locations.each do |location| %>
     <div class="col-md-4 col-sm-6 location-window">
-    <div class="row handy-row">
+    <div class="row handy-row" style="background: url(<%= image_path location.url %>); background-size: cover;">
       <div class="location-window-info">
         <div class="row">
           <div class="col-sm-7">

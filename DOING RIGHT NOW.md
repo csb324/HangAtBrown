@@ -1,1 +1,7 @@
-DOING RIGHT NOW: making the signed-in home pretty
+TO DO:
+
+style forms
+   find dropdowns!
+make navbar collapse correctly
+make an outfit dropdown
+
