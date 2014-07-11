@@ -1,15 +1,26 @@
-<% if user_signed_in? %>
 <nav class="navbar">
-    <div class="navbar-nav navbar-left nav">
-      <div class="navbar-header">
-        <%= link_to "hang@brown", root_path, class: "navbar-brand" %>
+  <% if user_signed_in? %>
+      <div class="navbar-nav navbar-left nav">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu-items">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="glyphicon glyphicon-th-list"></span>
+          </button>
+          <%= link_to "hang@brown", root_path, class: "navbar-brand" %>
+        </div>
       </div>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "hang", new_event_path, class: "hang-button" %></li>
-      <li><%= link_to current_user.first_name, profile_path %></li>
-      <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
+      <div class="collapse navbar-collapse" id="navbar-menu-items">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "hang", new_event_path, class: "hang-button" %></li>
+        <li><%= link_to current_user.first_name, profile_path %></li>
+        <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
+      </ul>
+      </div>
     </ul>
-  </ul>
+  <% else %>
+    <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to "sign in", new_user_session_path %></li>
+    <li><%= link_to "sign up", new_user_registration_path %></li>
+    </ul>
+  <% end %>
 </nav>
-<% end %>

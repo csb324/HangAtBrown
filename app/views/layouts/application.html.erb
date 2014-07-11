@@ -7,20 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container main">
-<%= render 'shared/nav_bar' %>
+  <div class="container main">
+    <%= render 'shared/nav_bar' %>
 
-<div class="container content">
-<% if flash[:notice].present? %>
-  <p class="alert alert-success"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:alert].present? %>
-  <p class="alert"><%= flash[:alert] %></p>
-<% end %>
+    <div class="container content">
 
-<%= yield %>
+      <% if flash[:notice].present? %>
+        <p class="alert alert-success"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:alert].present? %>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% end %>
 
-</div>
-</div>
+      <%= yield %>
+
+    </div>
+
+  </div>
 </body>
 </html>

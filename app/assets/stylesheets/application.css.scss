@@ -50,6 +50,9 @@ h1, h2, h3, h4 {
   a {
     color: $light-neutral-color;
   }
+  .glyphicon {
+    color: $light-neutral-color;
+  }
   li a:hover {
     background: $other-red;
   }
@@ -96,9 +99,35 @@ h1, h2, h3, h4 {
   }
 }
 
+.welcome {
+  position: relative;
+  top: -15px;
+  color: $light-neutral-color;
+  .welcome-image {
+    width: 100%;
+  }
+  .first-row {
+    background: $brown;
+  }
+  .welcome-image-box {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  h1, h2, h3, h4, h5{
+    color: $light-neutral-color;
+    vertical-align: center;
+  }
+  h1 {
+    font-size: 4em;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.3em;
+  }
+  .textbox-first {
+    padding-left: 25px;
+  }
 
-
-
-
-
+}
 
