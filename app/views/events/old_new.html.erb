@@ -4,7 +4,7 @@
     <%= f.select :event_type, Event::TYPES %>
   </div>
   <div class="field">
-    <%= f.label :location, 'Where' %>
+    <%= f.label :location, 'Where' %><br>
     <%= f.collection_select :location_id, Location.all, :id, :name %>
   </div>
 
@@ -20,14 +20,14 @@
     <%= f.text_field :topic %>
   </div>
 
+  <div class="field">
   <%= f.fields_for :rsvps do |rsvps_form| %>
-    <%= render 'rsvps/outfit_picker', f: rsvps_form %>
+    <%= rsvps_form.label :outfit %>
+    <%= rsvps_form.text_field :outfit %>
   <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit "hang" %>
   </div>
 <% end %>
-
-
-

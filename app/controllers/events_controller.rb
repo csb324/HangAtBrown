@@ -30,12 +30,14 @@ class EventsController < ApplicationController
     @rsvp = @event.rsvps.first
     # There should only be one RSVP in the array anyways, so we only look at the first
     # If there's more than one, that's a problem!
-
     @rsvp.user = current_user
     @rsvp.event = @event
 
     @rsvp.expected_arrival = @event.start_time
     @rsvp.creator = true
+
+    @rsvp.outfit = event_params["rsvps_attributes"]["0"]["outfit_color"].downcase +
+      " " + event_params["rsvps_attributes"]["0"]["outfit_object"].downcase
 
     if @event.save
       redirect_to @event.location, notice: "Event saved!"
@@ -47,7 +49,11 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:start_time, :end_time, :location_id, :topic, :event_type, rsvps_attributes: [:outfit])
+    params.require(:event).permit(:start_time, :end_time, :location_id, :topic, :event_type, rsvps_attributes: [:outfit_object, :outfit_color])
+  end
+
+  def outfit_params
+    params.require(:event).permit(:outfit_color, :outfit_object)
   end
 
 end

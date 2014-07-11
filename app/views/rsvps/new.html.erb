@@ -7,10 +7,7 @@
   <%= f.text_field :expected_arrival %>
   </div>
 
-  <div class="field">
-  <%= f.label :outfit, "What are you wearing? ;)" %>
-  <%= f.text_field :outfit %>
-  </div>
+  <%= render 'outfit_picker', f: f %>
 
   <%= f.submit "join" %>
 <% end %>
