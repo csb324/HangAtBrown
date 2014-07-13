@@ -1,20 +1,23 @@
-<div class="row new_event_form_page">
+<div class="new_event_form_page">
 <h1>Let's hang.</h1>
 <%= form_for @event do |f| %>
+<div class="row">
   <div class="form-label col-sm-6 col-xs-2">
     <%= f.label :event_type, 'What:' %>
   </div>
   <div class="col-sm-6 col-xs-10">
     <%= f.select :event_type, Event::TYPES, {}, {class: "form-control"} %>
  </div>
+ </div>
+ <div class="row">
   <div class="form-label col-sm-6 col-xs-2">
     <%= f.label :location, 'Where:' %>
     </div>
   <div class="col-sm-6 col-xs-10">
     <%= f.collection_select :location_id, Location.all, :id, :name , {}, {class: "form-control"} %>
+  </div>
 </div>
-
-
+<div class="row">
   <div class="col-sm-6 form-label col-xs-2">
     <%= f.label :start_time, 'When:' %>
   </div>
@@ -23,7 +26,8 @@
     <%= f.label :end_time, 'to' %>
     <%= f.select :end_time, possible_times_after(Time.now), {}, {class: "form-control"} %>
   </div>
-
+</div>
+<div class="row">
   <div class="form-label col-sm-6 col-xs-2">
     <%= f.label :topic, "Let's talk about:"  %>
   </div>
@@ -32,15 +36,17 @@
   </div>
   <div class="col-sm-8 col-sm-offset-2">
   <p class="help-block">Optional, but helpful if you've got something on your mind (or looking for a study buddy)</p></div>
+</div>
+<div class="row">
   <div class="col-sm-12">
   <%= f.fields_for :rsvps do |rsvps_form| %>
     <%= render 'rsvps/outfit_picker', f: rsvps_form %>
   <% end %>
-  <br>
-  <div class="actions">
-    <%= f.submit "hang", class: "form-control"%>
-  </div>
+</div>
+<div class="actions col-sm-12">
+  <%= f.submit "hang", class: "form-control"%>
+</div>
 
-  </div>
+</div>
 <% end %>
 </div>

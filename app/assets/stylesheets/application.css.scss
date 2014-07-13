@@ -146,12 +146,15 @@ h1, h2, h3, h4 {
   .form-control {
     width: 60%;
     display: inline-block;
-  }
-  .time-inputs .form-control {
-    width: 40%;
+    .actions {
+      width: 40%;
+    }
   }
   .outfit .form-control {
     width: 20%;
+  }
+  .time-inputs .form-control {
+    width: 40%;
   }
   .interest-field {
     margin-bottom: 15px;
@@ -159,9 +162,8 @@ h1, h2, h3, h4 {
   .col-sm-12 {
     text-align: center;
   }
-  .actions .form-control {
-    width: 40%;
+  .row {
+    margin-bottom: 20px;
   }
-  margin-bottom: 20px;
 }
 
