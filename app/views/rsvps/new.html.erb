@@ -1,13 +1,25 @@
-<%= render 'events/single', event: @event %>
-<p><%= @event.users.count %> <%= @event.users.count == 1 ? "person" : "people" %> hanging out</p>
-
-<%= form_for [@event, @rsvp] do |f| %>
-  <div class="field">
-  <%= f.label :expected_arrival, "I'll be there at" %>
-  <%= f.text_field :expected_arrival %>
-  </div>
-
-  <%= render 'outfit_picker', f: f %>
-
-  <%= f.submit "join" %>
+<div class="event-box">
+<h1><%= @event.host_nickname(current_user) %></h1>
+<p><%= @event.type_gerund %> at <%= @event.location.name %> <%= @event.current? ? "right now" : "from #{@event.start_time_name}" %> until <%= @event.end_time_name %></p>
+<h2>wants to talk about:</h2>
+<% @event.subjects.each do |subject| %>
+<p class="event-subject"><%= subject %></p>
 <% end %>
+</div>
+
+<div class="new_event_form_page">
+<h1>Hang with <%= @event.host_nickname(current_user) %> at <%= @event.location.name %>?</h1>
+<%= form_for [@event, @rsvp] do |f| %>
+  <div class="col-sm-6 form-label col-xs-2">
+  <%= f.label :expected_arrival, "I'll be there at:" %></div>
+  <div class="col-sm-6 col-xs-10">
+  <%= f.select :expected_arrival, possible_times_after(@event.start_time, given_max_time: @event.end_time), {}, {class: "form-control"}%>
+  </div>
+<div class="col-sm-12">
+  <%= render 'outfit_picker', f: f %>
+</div>
+<div class="col-sm-12">
+  <%= f.submit "join", class: "form-control" %>
+<% end %>
+</div>
+</div>

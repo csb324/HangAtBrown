@@ -101,6 +101,23 @@ class Event < ActiveRecord::Base
     nice_time(end_time)
   end
 
+  def type_gerund
+    case event_type
+    when "eat"
+      "eating"
+    when "have coffee"
+      "having coffee"
+    when "study"
+      "studying"
+    when "read"
+      "reading"
+    when "write"
+      "writing"
+    else
+      "hanging"
+    end
+  end
+
   private
 
 end

@@ -10,6 +10,7 @@ $other-brown: #3A1E1A; //or maybe
 $brown: #523528;
 $red: #C00404;
 $other-red: #E00031;
+$beige: #CCC6B7;
 
 html {
   height: 100%;
@@ -164,6 +165,17 @@ h1, h2, h3, h4 {
   }
   .row {
     margin-bottom: 20px;
+  }
+}
+
+.event-box {
+  p {
+    font-size: 1.3em;
+  }
+  background: $beige;
+  padding: 15px;
+  h1 {
+    margin-top: 5px;
   }
 }
 
