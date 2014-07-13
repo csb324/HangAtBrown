@@ -16,10 +16,7 @@
 <h3>Hangs on the agenda</h3>
 <% if @user.upcoming_events.present? %>
   <% @user.upcoming_events.each do |event| %>
-    <%= link_to event_path(event) do %>
-    <p><%= event.start_time_name %> at <%= event.location.name %>:
-    <%= event.event_description(current_user) %></p>
-    <% end %>
+    <%= render 'events/single', event: event %>
   <% end %>
 <% else %>
   <div>No upcoming plans</div>

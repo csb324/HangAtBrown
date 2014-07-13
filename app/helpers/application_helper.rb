@@ -34,7 +34,7 @@ module ApplicationHelper
 
     # If the given time is in the past, add "now" to the menu
     if given_min_time < Time.now
-      all_possible_times << ["right now", Time.now]
+      all_possible_times << ["right now", Time.now + 2.minutes]
       # And set the minimum time to now
       min_time = Time.now
     else

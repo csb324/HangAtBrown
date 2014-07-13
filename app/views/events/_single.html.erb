@@ -1,9 +1,9 @@
-<div>
+<div class="event-box">
   <p><%= event.start_time_name %> until <%= event.end_time_name %></p>
-
-  <%= link_to event_path(event) do %>
-    <p>
-      <%= event.event_description(current_user).capitalize %>
-    </p>
-  <% end %>
+  <h4><%= link_to event_path(event) do %>
+    <%= event.event_description(current_user).capitalize %>
+    <% if current_page?(profile_path) %>
+      at <%= event.location.name %>
+    <% end %>
+  <% end %></h4>
 </div>
