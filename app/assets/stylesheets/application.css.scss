@@ -37,9 +37,10 @@ body {
 h1, h2, h3, h4 {
   font-family: $serif;
   color: $brown;
-  a {
-    color: $red;
-  }
+}
+
+a {
+  color: $red;
 }
 
 .navbar {
@@ -177,5 +178,10 @@ h1, h2, h3, h4 {
   h1 {
     margin-top: 5px;
   }
+  margin-bottom: 15px;
 }
 
+.location-header {
+  height: 200px;
+  background-position: center center;
+}
