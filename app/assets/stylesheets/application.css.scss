@@ -8,7 +8,7 @@ $sans-serif: 'Open Sans', sans-serif;
 $light-neutral-color: #F9F8F3;
 $other-brown: #3A1E1A; //or maybe
 $brown: #523528;
-$red: #C00404;
+$red: #B30F0F;
 $other-red: #E00031;
 $beige: #CCC6B7;
 
@@ -109,7 +109,17 @@ a {
     width: 100%;
   }
   .first-row {
-    background: $brown;
+    background: $other-brown;
+  }
+  .second-row {
+    background: $red;
+  }
+  .third-row {
+    background: $other-brown;
+  }
+  .second-row, .third-row {
+    text-align: center;
+    padding: 30px;
   }
   .welcome-image-box {
     padding-left: 0px;
@@ -117,7 +127,6 @@ a {
   }
   h1, h2, h3, h4, h5{
     color: $light-neutral-color;
-    vertical-align: center;
   }
   h1 {
     font-size: 4em;
@@ -125,10 +134,22 @@ a {
   ul {
     list-style: none;
     padding-left: 0;
+    li {
+      padding-bottom: 15px;
+    }
+  }
+  p, li {
     font-size: 1.3em;
   }
   .textbox-first {
     padding-left: 25px;
+  }
+  .btn-lg {
+    padding: 15px 30px;
+    font-size: 25px;
+    background-color: $brown;
+    border-color: $other-brown;
+    color: $light-neutral-color;
   }
 }
 

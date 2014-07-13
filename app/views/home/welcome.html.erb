@@ -1,10 +1,37 @@
 <div class="welcome">
+
   <div class="row first-row">
     <div class="col-sm-6 col-md-4 welcome-image-box">
       <%= image_tag "sad-convo.png", class: "welcome-image"%>
     </div>
     <div class="col-sm-6 col-md-8 textbox-first">
       <h1>Friends leave you hanging?</h1>
+      <ul>
+        <li>Struggling with a weird class schedule?</li>
+        <li>Tired of reading the BDH by yourself?</li>
+        <li>Ever sat down with a stranger, only to discover that they'd really just like to be left alone?</li>
+        <li>Wish there were a better way?</li>
+      </ul>
     </div>
+  </div>
+  <div class="row second-row">
+    <h2>Looking for a study buddy?</h2>
+  </div>
+  <div class="row">
+    <%= image_tag "facebook.png", class: "welcome-image" %>
+  </div>
+  <div class="row third-row">
+    <h2>Just wish there were an easy, not-totally-weird way to make new friends at Brown?</h2>
+  </div>
+  <div class="row">
+    <%= image_tag "welcome.jpg", class: "welcome-image" %>
+  </div>
+  <div class="row second-row">
+    <h2>Step one</h2>
+    <%= link_to "Sign up for hang@brown", new_user_registration_path, class: "btn btn-lg btn-default" %>
+    <h2>Step two</h2>
+    <p>Tell the world where you'll be hanging. They won't see your personal information, just your initials and a few of your interests.</p>
+    <h2>Step three</h2>
+    <p>Someone else sees that you're hanging out. If they join you, we'll tell them your name and how to spot you. Then we'll send you a text to let you know they're on their way.</p>
   </div>
 </div>

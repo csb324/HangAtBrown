@@ -12,7 +12,7 @@
 <% end %>
 <% if @future_events.present? %>
 <h3>later today</h3>
-<% @future_events.each do |event| %>
-  <%= render 'events/single', event: event %>
-<% end %>
+  <% @future_events.each do |event| %>
+    <%= render 'events/single', event: event %>
+  <% end %>
 <% end %>
