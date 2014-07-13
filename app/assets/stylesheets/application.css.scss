@@ -130,9 +130,12 @@ h1, h2, h3, h4 {
   }
 }
 
-.new_event_form_page {
+.new_event_form_page, .user_form_page {
   label {
     font-size: 1.3em;
+  }
+  h1 {
+    margin-bottom: 15px;
   }
   h1, p {
     text-align: center;
@@ -150,7 +153,7 @@ h1, h2, h3, h4 {
   .outfit .form-control {
     width: 20%;
   }
-  .col-sm-6 {
+  .interest-field {
     margin-bottom: 15px;
   }
   .col-sm-12 {
@@ -159,5 +162,6 @@ h1, h2, h3, h4 {
   .actions .form-control {
     width: 40%;
   }
+  margin-bottom: 20px;
 }
 

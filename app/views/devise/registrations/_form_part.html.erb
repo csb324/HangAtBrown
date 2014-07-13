@@ -1,13 +1,21 @@
-<div><%= f.label :phone_number %><br />
-<%= f.text_field :phone_number %></div>
-
-<div><%= f.label :class_year %><br />
-<%= f.select :class_year, User::CLASS_YEARS, include_blank: true %></div>
-
-<div><%= f.label :concentration %><br />
-<%= f.text_field :concentration %></div>
-
-<h3>Interests</h3>
-<div><%= f.text_field :interest_one %></div>
-<div><%= f.text_field :interest_two %></div>
-<div><%= f.text_field :interest_three %></div>
+<div class="user_form_page row">
+<div class="form-label col-sm-6 col-xs-2"><%= f.label :phone_number %></div>
+<div class="col-sm-6 col-xs-10">
+<%= f.text_field :phone_number, class: "form-control" %></div></div>
+<div class="user_form_page row">
+<div class="form-label col-sm-6 col-xs-2"><%= f.label :class_year %></div>
+<div class="col-sm-6 col-xs-10">
+  <%= f.select :class_year, User::CLASS_YEARS, {include_blank: true}, class: "form-control" %></div></div>
+<div class="user_form_page row">
+<div class="form-label col-sm-6 col-xs-2"><%= f.label :concentration %></div>
+<div class="col-sm-6 col-xs-10">
+  <%= f.text_field :concentration, class: "form-control" %></div>
+</div>
+<div class="user_form_page row">
+<div class="col-sm-12">
+<h2>Interests</h2>
+<div><%= f.text_field :interest_one, class: "form-control interest-field" %></div>
+<div><%= f.text_field :interest_two, class: "form-control interest-field" %></div>
+<div><%= f.text_field :interest_three, class: "form-control interest-field" %></div>
+</div>
+</div>
