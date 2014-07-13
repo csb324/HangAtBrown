@@ -1,34 +1,37 @@
 <div class="row new_event_form_page">
 <h1>Let's hang.</h1>
 <%= form_for @event do |f| %>
-  <div class="form-label col-sm-6">
+  <div class="form-label col-sm-6 col-xs-2">
     <%= f.label :event_type, 'What:' %>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 col-xs-10">
     <%= f.select :event_type, Event::TYPES, {}, {class: "form-control"} %>
  </div>
-  <div class="form-label col-sm-6">
+  <div class="form-label col-sm-6 col-xs-2">
     <%= f.label :location, 'Where:' %>
     </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 col-xs-10">
     <%= f.collection_select :location_id, Location.all, :id, :name , {}, {class: "form-control"} %>
 </div>
-  <div class="col-sm-6 form-label">
+
+
+  <div class="col-sm-6 form-label col-xs-2">
     <%= f.label :start_time, 'When:' %>
   </div>
-  <div class="col-sm-6 time-inputs">
-    <%= f.text_field :start_time %>
+  <div class="col-sm-6 time-inputs col-xs-10">
+    <%= f.select :start_time, possible_times_after(Time.now), {}, {class: "form-control"}%>
     <%= f.label :end_time, 'to' %>
-    <%= f.text_field :end_time %>
+    <%= f.select :end_time, possible_times_after(Time.now), {}, {class: "form-control"} %>
   </div>
 
-  <div class="form-label col-sm-6">
-    <%= f.label :topic, "Something on your mind?"  %>
+  <div class="form-label col-sm-6 col-xs-2">
+    <%= f.label :topic, "Let's talk about:"  %>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 col-xs-10">
     <%= f.text_field :topic, {class: "form-control"}%>
   </div>
-  <p class="help-block">This is an optional field!</p>
+  <div class="col-sm-8 col-sm-offset-2">
+  <p class="help-block">Optional, but helpful if you've got something on your mind (or looking for a study buddy)</p></div>
   <div class="col-sm-12">
   <%= f.fields_for :rsvps do |rsvps_form| %>
     <%= render 'rsvps/outfit_picker', f: rsvps_form %>

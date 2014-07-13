@@ -141,8 +141,11 @@ h1, h2, h3, h4 {
     text-align: right;
   }
   .form-control {
-    width: 40%;
+    width: 60%;
     display: inline-block;
+  }
+  .time-inputs .form-control {
+    width: 40%;
   }
   .outfit .form-control {
     width: 20%;
@@ -152,6 +155,9 @@ h1, h2, h3, h4 {
   }
   .col-sm-12 {
     text-align: center;
+  }
+  .actions .form-control {
+    width: 40%;
   }
 }
 
