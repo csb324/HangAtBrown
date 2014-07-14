@@ -33,8 +33,8 @@ class Event < ActiveRecord::Base
   def all_hosting_rsvps
     rsvps.select{ |rsvp| rsvp.creator == true }
   end
-
   # There should only ever be one person in this array.
+
   def host
     all_hosting_rsvps.first.user
   end

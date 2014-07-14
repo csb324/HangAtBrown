@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     @rsvp.outfit = event_params["rsvps_attributes"]["0"]["outfit_color"].downcase +
       " " + event_params["rsvps_attributes"]["0"]["outfit_object"].downcase
 
-    if @event.save
+    if @event.save && @rsvp.save
       redirect_to @event.location, notice: "Event saved!"
     else
       flash.now[:alert] = @event.errors.full_messages.join(", ")
