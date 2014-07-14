@@ -1,28 +1,12 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to hang@brown, your new favorite way to find new friends at brown!
 
-Things you may want to cover:
+### Step one
+Sign up. You'll need to give this app your phone number, as well as three interests
 
-* Ruby version
+### Step two
+Tell the world where you'll be hanging. They won't see your personal information, just your initials and a few of your interests.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Step three
+Someone else sees that you're hanging out. If they join you, we'll tell them your name and how to spot you. Then we'll send you a text to let you know they're on their way.
