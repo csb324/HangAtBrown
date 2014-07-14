@@ -1,7 +1,7 @@
 class Rsvp < ActiveRecord::Base
 
   COLORS = %w(black grey white cream brown red orange yellow green blue purple pink silver gold striped patterned neon)
-  OBJECTS = %w(t-shirt button-down hat backpack jacket scarf tie headband headphones sweater cardigan blazer)
+  OBJECTS = %w(t-shirt button-down hat backpack jacket scarf dress tie headband headphones sweater cardigan blazer)
 
   attr_accessor :outfit_color, :outfit_object
 
