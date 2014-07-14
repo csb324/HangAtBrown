@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
   validate :start_time_cannot_be_after_end_time
 
   def start_time_cannot_be_in_the_past
-    if start_time < Time.now
+    if start_time < Time.zone.now
       errors.add(:start_time, "can't be in the past")
     end
   end
@@ -82,14 +82,14 @@ class Event < ActiveRecord::Base
 
   # true/false - Is this event currently happening?
   def current?
-    has_started = start_time < Time.now
-    has_not_ended = end_time > Time.now
+    has_started = start_time < Time.zone.now
+    has_not_ended = end_time > Time.zone.now
     has_started && has_not_ended
   end
 
   # Is the event in the past?
   def past?
-    end_time < Time.now
+    end_time < Time.zone.now
   end
 
   # Time name formatting (for convenience)

@@ -33,16 +33,16 @@ module ApplicationHelper
     all_possible_times = []
 
     # If the given time is in the past, add "now" to the menu
-    if given_min_time < Time.now
-      all_possible_times << ["right now", Time.now + 2.minutes]
+    if given_min_time < Time.zone.now
+      all_possible_times << ["right now", Time.zone.now + 2.minutes]
       # And set the minimum time to now
-      min_time = Time.now
+      min_time = Time.zone.now
     else
     # Otherwise set the minimum time to whatever is given
       min_time = given_min_time
     end
 
-    possible_hours = (Time.now.hour...24)
+    possible_hours = (Time.zone.now.hour...24)
     # Increment minutes by five
     possible_minutes = (0...12).map { |i| i*5 }
 

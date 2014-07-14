@@ -38,7 +38,7 @@ class Rsvp < ActiveRecord::Base
   end
 
   def expected_arrival_cannot_be_in_the_past
-    if expected_arrival < Time.now
+    if expected_arrival < Time.zone.now
       errors.add(:expected_arrival, "can't be in the past")
     end
   end
