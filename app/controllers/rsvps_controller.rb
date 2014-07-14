@@ -44,6 +44,10 @@ class RsvpsController < ApplicationController
       send_sms(@cancellation_message, recipient: @event.host)
     end
 
+    if @event.users.count == 1
+      @event.destroy
+    end
+
     @rsvp.destroy
     redirect_to profile_path, notice: "Guess you weren't down to hang."
   end
