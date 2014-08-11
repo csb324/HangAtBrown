@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
   end
 
   def all_hosting_rsvps
-    rsvps.select{ |rsvp| rsvp.creator == true }
+    rsvps.includes(:user).select{ |rsvp| rsvp.creator == true }
   end
   # There should only ever be one person in this array.
 

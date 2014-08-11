@@ -5,14 +5,14 @@ class Location < ActiveRecord::Base
 
   # Array of all events in this location that are currently happening
   def current_events
-    events.select do |event|
+    events.includes(:rsvps).select do |event|
       event.current?
     end
   end
 
   # Array of all events in this location that have not started yet
   def future_events
-    events.select do |event|
+    events.includes(:rsvps).select do |event|
       event.start_time > Time.now
     end
   end
