@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   has_many :events, dependent: :destroy
+  has_many :rsvps, through: :events
   validates! :name, presence: true
 
   # Array of all events in this location that are currently happening

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.includes(:rsvps).find(params[:id])
     if current_user.events.include? @event
       @my_rsvp = current_user.rsvps.select{ |rsvp| rsvp.event == @event }.first
       redirect_to event_rsvp_path(@event, @my_rsvp)
