@@ -53,24 +53,25 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.find(params[:id])
 
     # Hang @ brown will send you a text if someone cancels on you!
+    alert_cancellation(@rsvp)
 
-    @cancellation_message = "Oh no! #{current_user.first_name} can no longer hang at #{@rsvp.arrival_time_name} at #{@event.location.name}. Hang again soon!"
     if @rsvp.creator == true
-      # If the host cancels, text everyone else
-      @event.users.each do |person|
-        send_sms(@cancellation_message, recipient: person) unless person == current_user
-      end
-    else
-      # If a guest cancels, only text the host, not everyone
-      send_sms(@cancellation_message, recipient: @event.host)
-    end
-
-    if @event.users.count == 1
       @event.destroy
     end
 
     @rsvp.destroy
     redirect_to profile_path, notice: "Guess you weren't down to hang."
+  end
+
+  def alert_cancellation(rsvp)
+    message = "Oh no! #{current_user.first_name} can no longer hang at #{rsvp.arrival_time_name} at #{@event.location.name}. Hang again soon!"
+    if rsvp.creator == true
+      @event.users.each do |person|
+        send_sms(message, recipient: person) unless person == current_user
+      end
+    else
+      send_sms(message, recipient: @event.host)
+    end
   end
 
   private
