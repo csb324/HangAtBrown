@@ -16,17 +16,38 @@ class RsvpsController < ApplicationController
     @rsvp.user = current_user
     @rsvp.event = @event
 
-    @rsvp.outfit = rsvp_params["outfit_color"].downcase + " " + rsvp_params["outfit_object"]
+    @rsvp.outfit = configured_outfit
 
     if @rsvp.save
       redirect_to event_rsvp_path(@event, @rsvp), notice: "Awesome!"
-      send_sms("You're hanging out with #{@event.host.first_name} today at #{@event.location.name} at #{@rsvp.arrival_time_name}. #{@event.host.first_name} will be wearing a #{@event.host_outfit}!", recipient: current_user)
-      send_sms("You've got a hang! #{current_user.first_name} is wearing a #{@rsvp.outfit}, and will be at #{@event.location.name} at #{@rsvp.arrival_time_name}", recipient: @event.host)
+      send_confirmation_texts(@event, @rsvp)
     else
       flash.now[:alert] = @rsvp.errors.full_messages.join(", ")
       render :new
     end
   end
+
+  def set_new_rsvp_details(rsvp)
+    rsvp.user = current_user
+    rsvp.event = @event
+    rsvp.outfit = configured_outfit
+  end
+
+  def configured_outfit
+    rsvp_params["outfit_color"].downcase + " " + rsvp_params["outfit_object"]
+  end
+
+  def send_confirmation_texts(event, rsvp)
+    send_sms(
+      "You're hanging out with #{event.host.first_name} today at #{event.location.name} at #{rsvp.arrival_time_name}. #{event.host.first_name} will be wearing a #{event.host_outfit}!",
+      recipient: current_user
+    )
+    send_sms(
+      "You've got a hang! #{current_user.first_name} is wearing a #{rsvp.outfit}, and will be at #{event.location.name} at #{rsvp.arrival_time_name}",
+      recipient: event.host
+    )
+  end
+
 
   def destroy
     @rsvp = Rsvp.find(params[:id])

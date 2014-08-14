@@ -1,0 +1,7 @@
+{
+    "cyclomatic_complexity": {
+        "name": "cyclomatic_complexity",
+        "value": 6,
+        "level": "warn"
+    }
+}
