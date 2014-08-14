@@ -27,24 +27,27 @@ class EventsController < ApplicationController
 
     # Creating the automatic rsvp for the host
 
-    @rsvp = @event.rsvps.first
-    # There should only be one RSVP in the array anyways, so we only look at the first
-    # If there's more than one, that's a problem!
-    @rsvp.user = current_user
-    @rsvp.event = @event
-
-    @rsvp.expected_arrival = @event.start_time
-    @rsvp.creator = true
-
-    @rsvp.outfit = event_params["rsvps_attributes"]["0"]["outfit_color"].downcase +
-      " " + event_params["rsvps_attributes"]["0"]["outfit_object"].downcase
-
-    if @event.save && @rsvp.save
+    if @event.save && build_new_event_rsvp(@event)
       redirect_to @event.location, notice: "Event saved!"
     else
       flash.now[:alert] = @event.errors.full_messages.join(", ")
       render :new
     end
+  end
+
+  def build_new_event_rsvp(event)
+    @rsvp = event.rsvps.first
+
+    @rsvp.user = current_user
+
+    @rsvp.expected_arrival = event.start_time
+
+    @rsvp.creator = true
+
+    @rsvp.outfit = event_params["rsvps_attributes"]["0"]["outfit_color"].downcase +
+      " " + event_params["rsvps_attributes"]["0"]["outfit_object"].downcase
+
+    @rsvp.save
   end
 
   private
